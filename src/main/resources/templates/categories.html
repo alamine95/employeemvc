@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List Departements</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" th:href="@{/}">Employees Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/products}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/categories}">Departements</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+    <div class="container text-center">
+        <div> <h1>Departements List</h1></div>
+        <div>
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="departement : ${listDepartements}">
+                    <tr>
+                        <td>[[${departement.id}]]</td>
+                        <td>[[${departement.name}]]</td>
+                        <td>
+                            <a th:href="@{'/departement/edit/' + ${departement.id}}" class="btn btn-primary">Edit</a>
+                            &nbsp;
+                            <a th:href="@{'/departement/delete/' + ${departement.id}}" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+<!-- Footer -->
+<footer class="text-center text-lg-start bg-light text-muted">
+
+    <!-- Copyright -->
+    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+        © 2021 Copyright:
+        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">LAMDA SOW</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!-- Footer -->
+
+</body>
+</html>

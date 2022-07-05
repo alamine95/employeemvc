@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create New Product</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" th:href="@{/}">Employees Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/products}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/categories}">Departements</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+<div class="container text-center">
+    <div th:if="${employee.id == null}"> <h1>Create New Employee</h1></div>
+    <div th:unless="${employee.id == null}"> <h1>Edit Employee</h1></div>
+
+    <form th:action="@{/products/save}" th:object="${employee}" method="post" style="max-width: 600px; margin: 0 auto;">
+        <input type="hidden" th:field="*{id}" th:value="${employee.id}"/>
+        <div class="form-group">
+            <label for="exampleInputEmail1">Nom: </label>
+            <input type="text" th:field="*{name}" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter nom">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Prenom:</label>
+            <input type="text" th:field="*{prenom}" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Departement:</label>
+            <select th:field="*{departement}" class="form-control" required>
+                <th:block th:each="dep : ${listDepartements}">
+                    <option th:text="${dep.name}" th:value="${dep.id}"/>
+                </th:block>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+</div>
+</body>
+</html>

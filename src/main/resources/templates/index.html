@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Management Hompage</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/css/bootstrap.min.css}" />
+</head>
+<body>
+
+<nav class="navbar navbar-expand-md bg-dark navbar-dark">
+    <!-- Brand -->
+    <a class="navbar-brand" th:href="@{/}">Employees Management System</a>
+
+    <!-- Toggler/collapsibe Button -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar links -->
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/products}">Employees</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" th:href="@{/categories}">Departements</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+
+<div class="container text-center">
+    <div> <h1>Bienvenue to product app</h1></div>
+    <div class="p-2"> <a class="h2" th:href="@{/categories}">List Categories</a></div>
+    <div class="p-2"> <a class="h2" th:href="@{/categories/new}">Create Category</a></div>
+    <div class="p-2"> <a class="h2" th:href="@{/products}">List Products</a></div>
+    <div class="p-2"> <a class="h2" th:href="@{/products/new}">Create Product</a></div>
+</div>
+</body>
+</html>
